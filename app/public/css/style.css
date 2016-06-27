@@ -1,0 +1,1398 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+section, main, nav {
+    display: block;
+
+}
+
+@media all and (max-width: 360px) {
+
+    main {
+        position: relative;
+        min-height: 1681px;
+        background-color: #f0d5c0;
+        padding-bottom: 84px;
+        padding-top: 168px;
+    }
+
+    main.mainRecipes {
+        height: 4354px;
+        overflow-y: hidden;
+    }
+
+    #wrapper {
+        width: 1080px;
+        height: 1849px;
+
+    }
+
+    header {
+        height: 168px;
+        background-color: #d78069;
+        position: fixed;
+        width: 1080px;
+        z-index: 100;
+        top: 0;
+    }
+
+    #foodstuffs {
+        position: relative;
+    }
+
+    #dotsSection {
+        height: 88px;
+        background-color: #f7f0e7;
+        text-align: center;
+    }
+
+    header > a {
+        background-image: url('../images/hamburger.gif');
+        width: 54px;
+        height: 36px;
+        display: block;
+        position: relative;
+        top: 66px;
+        left: 52px;
+    }
+
+    #recipeMenuLogo {
+        background-image: url('../images/recipe_icon.png');
+        width: 93px;
+        height: 89px;
+        position: absolute;
+        left: 934px;
+        top: 39px;
+    }
+
+    #headerTitle {
+        color: #fff;
+        font-size: 57px;
+        position: absolute;
+        top: 39px;
+        left: 171px;
+        font-weight: 600;
+        font-family: 'Titillium Web', sans-serif;
+    }
+
+    #dotsSection > section {
+        display: inline-block;
+        position: relative;
+        top: 36px;
+    }
+
+    .dot {
+        width: 14px;
+        height: 14px;
+        border: solid 1px #ac8c6d;
+        border-radius: 7px;
+        float: left;
+        margin: 0 8px 0 8px;
+    }
+
+    .coloredDot {
+        background-color: #ac8c6d;
+    }
+
+    #category {
+        font-size: 53px;
+        color: #d78069;
+        position: relative;
+        top: 51px;
+        text-align: center;
+        margin-bottom: 95px;
+        font-weight: 700;
+        font-family: 'Rokkitt', serif;
+    }
+
+    #leftArrow {
+        position: absolute;
+        background-image: url('../images/left_arrow_icon.png');
+        width: 54px;
+        height: 38px;
+        display: inline-block;
+        top: 150px;
+        left: 52px;
+        z-index: 50;
+        cursor: pointer;
+    }
+
+    #rightArrow {
+        position: absolute;
+        background-image: url('../images/right_arrow_icon.png');
+        width: 54px;
+        height: 38px;
+        display: inline-block;
+        top: 150px;
+        right: 52px;
+        cursor: pointer;
+    }
+
+    span:active, input:active {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    .switch {
+        margin: 28px;
+    }
+
+    .toggle {
+        position: absolute;
+        margin-right: -9999px;
+        visibility: hidden;
+    }
+
+    input.toggle + label {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+        user-select: none;
+        width: 856px;
+        height: 124px;
+        margin: 0 auto;
+        font-weight: 300;
+        font-style: italic;
+        font-family: 'Titillium Web', sans-serif;
+    }
+
+    input.toggle + label:before {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        content: attr(data-on);
+        text-align: center;
+        line-height: 2.5;
+        color: #8c6239;
+        font-size: 48px;
+        background-image: url('../images/swipe-button.png');
+        background-position: right;
+        transition: background-position 0.4s;
+    }
+
+    input.toggle:checked + label:before {
+        background-position: left;
+    }
+
+    nav {
+        background-color: #f8f5f1;
+        width: 438px;
+        height: 100%;
+        position: fixed;
+        z-index: 1000;
+        display: none;
+        top: 0;
+    }
+
+    #navLogo {
+        display: block;
+        background-image: url('../images/nav-logo.png');
+        background-position: center center;
+        background-color: #d78069;
+        background-repeat: no-repeat;
+        width: 390px;
+        height: 390px;
+        padding: 24px;
+        margin-bottom: 50px;
+    }
+
+    .navOption {
+        display: block;
+        color: #d78069;
+        font-size: 48px;
+        position: relative;
+        text-decoration: none;
+        left: 54px;
+        padding-left: 52px;
+        margin-bottom: 36px;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
+    }
+
+    .foodStuffOption {
+        background: url('../images/foodstuff_menu_icon.png') no-repeat left center;
+
+    }
+
+    .recipesOption {
+        background: url('../images/recipe_menu_icon.png') no-repeat left center;
+        background-position: 0 24px;
+    }
+
+    .blackListOption {
+        background: url('../images/blacklist_menu_icon.png') no-repeat left center;
+        background-position: 0 26px;
+    }
+
+    .settingOption {
+        background: url('../images/settings_menu_icon.png') no-repeat left center;
+    }
+
+    #exitOption {
+        position: absolute;
+        bottom: 35px;
+        margin-bottom: 0;
+        background: url('../images/exit_menu_icon.png') no-repeat left center;
+        background-position: 0 26px;
+    }
+
+    .currentPageArrow:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: -19px;
+        left: -117px;
+        z-index: -1;
+        background-repeat:no-repeat;
+        background-position:right bottom;
+        background-image: url('../images/current_page_arrow.png');
+    }
+
+    .recipe {
+        width: 1080px;
+        height: 1379px;
+        position: relative;
+
+    }
+
+    .meal {
+        color: #d78069;
+        font-size: 60px;
+        position: relative;
+        left: 113px;
+        top: 50px;
+        font-family: 'Rokkitt', sans-serif;
+        font-weight: 700;
+    }
+
+    .bell {
+        display: inline-block;
+        background: url("../images/bell-icon.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 34px;
+        height: 32px;
+        position: absolute;
+        left: 808px;
+        top: 65px;
+    }
+
+    .time {
+        width: 100px;
+        height: 48px;
+        display: inline-block;
+        background-color: #d78069;
+        color: #fff;
+        font-size: 33px;
+        position: absolute;
+        top: 57px;
+        left: 864px;
+        text-align: center;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
+    }
+
+    .recipeImage {
+        background: url("../images/recipe-image.png");
+        width: 976px;
+        height: 1048px;
+        margin: 0 auto;
+        position: relative;
+        top: 94px;
+        -webkit-transition: height .5s;
+        -moz-transition: height .5s;
+        -ms-transition: height .5s;
+        -o-transition: height .5s;
+        transition: height .5s;
+    }
+
+    .recipe-btn {
+        width: 485px;
+        height: 146px;
+        background-color: #f8f5f1;
+        border: solid 2px #c8a78a;
+        color: #aa8d75;
+        font-size: 40px;
+        float: left;
+        z-index: 98;
+        position: relative;
+        top: 94px;
+        text-align: center;
+        line-height: 3.5;
+        cursor: pointer;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
+    }
+
+    .ingredients-btn {
+        margin-left: 52px;
+    }
+    .directions-btn {
+        border-left-width: 0;
+    }
+
+    .recipeName {
+        font-size: 65px;
+        color: #fff;
+        position: absolute;
+        bottom: 118px;
+        left: 61px;
+        width: 600px;
+        font-family: 'Rokkitt', sans-serif;
+        font-weight: 400;
+        line-height: 59px;
+
+    }
+
+    .recipeTimeToMake {
+        position: absolute;
+        left: 61px;
+        bottom: 52px;
+        font-size: 36px;
+        color: #f2f2f2;
+        background: url("../images/time-icon.png") no-repeat left center;
+        padding-left: 58px;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 300;
+    }
+
+    .recipeServes {
+        position: absolute;
+        left: 388px;
+        bottom: 52px;
+        font-size: 36px;
+        color: #f2f2f2;
+        background: url("../images/plate-icon.png") no-repeat left center;
+        padding-left: 58px;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 300;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    footer > ul {
+        position: relative;
+        top: 24px;
+    }
+
+    footer > ul > li {
+        display: inline;
+    }
+
+    footer > ul > li > a {
+        color: #c0a894;
+        font-size: 68px;
+        font-family: 'Roboto', sans-serif;
+        padding: 0 28px 0 28px;
+    }
+
+    footer {
+        height: 144px;
+        background-color: #a07954;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 1080px;
+        z-index: 100;
+    }
+
+    .currentDay {
+        color: #fff;
+    }
+
+    .pressed-btn {
+        border: solid 2px #c8a78a;
+        color: #fff;
+        background: #c8a78a url('../images/open-btn-arrow.png') no-repeat 230px 125px;
+    }
+
+    .directions-btn.pressed-btn {
+        border-left-width: 0;
+    }
+
+    .directions-btn.pressed-btn:after {
+        content: '';
+        position: absolute;
+        width: 976px;
+        height: 36px;
+        top: 147px;
+        left: -489px;
+        background-color: #c8a78a;
+    }
+
+    .ingredients-btn.pressed-btn:after {
+        content: '';
+        position: absolute;
+        width: 976px;
+        height: 36px;
+        top: 147px;
+        left: -2px;
+        background-color: #c8a78a;
+    }
+
+    .bottom {
+        width: 976px;
+        height: 627px;
+        background-color: #c8a78a;
+        margin: 0 auto;
+        overflow: auto;
+    }
+
+    .bottom-row {
+        width: 900px;
+        min-height: 112px;
+        color: #997657;
+        background-color: #fff;
+        font-size: 42px;
+        margin: 26px auto;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 300;
+        font-style: italic;
+    }
+
+    .bottom-row:first-child {
+        margin-top: 36px;
+    }
+
+    .bottom-row:last-child {
+        margin-bottom: 38px;
+    }
+
+    .bottom-row > p {
+        padding: 27px 46px;
+        line-height: 57px;
+    }
+
+    .closedImage {
+        height: 411px;
+    }
+
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+        display: none;
+    }
+
+    .like {
+        background-image: url("../images/heart.png");
+        display: inline-block;
+        width: 120px;
+        height: 104px;
+        position: absolute;
+        bottom: 64px;
+        right: 64px;
+        cursor: pointer;
+    }
+
+    .likeFill {
+        background-image: url("../images/heart_p.png");
+        display: inline-block;
+        width: 120px;
+        height: 104px;
+        position: absolute;
+        bottom: 64px;
+        right: 64px;
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+        -ms-transform: scale(0);
+        -o-transform: scale(0);
+        transform: scale(0);
+        -webkit-transition: transform 1s;
+        -moz-transition: transform 1s;
+        -ms-transition: transform 1s;
+        -o-transition: transform 1s;
+        transition: transform 1s;
+    }
+
+    .likeFill.liked {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+
+    .bottomContainer {
+        overflow-y: auto;
+        position: relative;
+        top: 93px;
+        height: 627px;
+        transition: height 0.5s;
+        -webkit-transition: height 0.5s;
+        -moz-transition: height 0.5s;
+        -o-transition: height 0.5s;
+    }
+
+    .bottomContainer.bottomHide {
+        height: 0;
+    }
+
+    #darkBG {
+        position: fixed;
+        top: 0;
+        background-color: black;
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+        opacity: .5;
+    }
+
+    .lockScreen {
+        overflow: hidden;
+    }
+
+    #timepicker {
+        height: 737px;
+        width: 849px;
+        background-color: #f8f5f1;
+        text-align: center;
+        position: fixed;
+        top: 226px;
+        left: 117px;
+        z-index: 1000;
+    }
+
+    #mealTimeTitle {
+        color: #8c6239;
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 52px;
+        display: inline-block;
+        position: relative;
+        top: 68px;
+    }
+
+    #leftTopArrow {
+        background-image: url("../images/time_top_arrow.png");
+        height: 22px;
+        width: 38px;
+        display: inline-block;
+        position: absolute;
+        top: 186px;
+        left: 238px;
+        z-index: 1001;
+    }
+
+    #leftBottomArrow {
+        background-image: url("../images/time_bottom_arrow.png");
+        height: 22px;
+        width: 38px;
+        display: inline-block;
+        position: absolute;
+        left: 238px;
+        bottom: 218px;
+        z-index: 1001;
+
+    }
+
+    #rightTopArrow {
+        background-image: url("../images/time_top_arrow.png");
+        height: 22px;
+        width: 38px;
+        display: inline-block;
+        position: absolute;
+        top: 186px;
+        right: 236px;
+        z-index: 1001;
+    }
+
+    #rightBottomArrow {
+        background-image: url("../images/time_bottom_arrow.png");
+        height: 22px;
+        width: 38px;
+        display: inline-block;
+        position: absolute;
+        right: 236px;
+        bottom: 218px;
+        z-index: 1001;
+    }
+
+    #timePickerTime {
+        color: #caac91;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
+        font-size: 248px;
+        position: absolute;
+        top: 160px;
+        right: 123px;
+
+    }
+
+    #doneTimepicker {
+        height: 80px;
+        width: 300px;
+        background-color: #d78069;
+        position: absolute;
+        left: 112px;
+        bottom: 71px;
+        font-size: 40px;
+        color: #fff;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
+
+    }
+
+    #cancelTimepicker {
+        height: 80px;
+        width: 300px;
+        background-color: #d78069;
+        position: absolute;
+        right: 112px;
+        bottom: 71px;
+        font-size: 40px;
+        color: #fff;
+        font-family: 'Titillium Web', sans-serif;
+        font-weight: 600;
+    }
+
+    #cancelTimepicker > p {
+        position: relative;
+        top: 8px;
+    }
+
+    #doneTimepicker > p {
+        position: relative;
+        top: 8px;
+    }
+
+    #blockPage{
+        background-color:#f0d5c0;
+        width:100%;
+        height:100%;
+        position: fixed;
+        top:0;
+        z-index: 99;
+    }
+
+    .scaleSmall{
+        transform: scale(0.75, 0.75);
+        -webkit-transform: scale(0.75, 0.75);
+        -moz-transform: scale(0.75, 0.75);
+        -ms-transform: scale(0.75, 0.75);
+        -o-transform: scale(0.75, 0.75);
+        margin-top: 73px;
+    }
+
+    #addBlockList{
+        font-size: 52px;
+        font-family: 'Titillium Web', sans-serif;
+        color: #8c6239;
+        margin-left: 278px;
+        display: inline-block;
+        margin-top: 17px;
+    }
+
+    #blockDone{
+        height: 80px;
+        width: 300px;
+        color: #fff;
+        background-color:#d78069;
+        font-size: 40px;
+        font-family: 'Titillium Web', sans-serif;
+        text-align: center;
+        float:left;
+        margin-left: 228px;
+        margin-top:43px;
+        line-height: 2;
+    }
+
+    #blockCancel{
+        height: 80px;
+        width: 300px;
+        color: #fff;
+        background-color:#d78069;
+        font-size: 40px;
+        font-family: 'Titillium Web', sans-serif;
+        text-align: center;
+        float: left;
+        margin-left:24px;
+        margin-top:43px;
+        line-height: 2;
+    }
+
+    .blockMeal{
+        top: 218px;
+    }
+
+    .blockBell{
+        top: 235px;
+    }
+
+    .blockTime{
+        top: 225px;
+
+    }
+
+    #goodNight {
+        color: #d78069;
+        font-family: 'Rokkitt', serif;
+        font-weight: 700;
+        font-size: 60px;
+        position: absolute;
+        bottom: 195px;
+        left: 391px;
+    }
+
+    #blackShade{
+        height: 899px;
+        width: 732px;
+        background-color: #000;
+        opacity: 0.5;
+        position: absolute;
+        top: 362px;
+        left: 174px;
+    }
+
+    .day {
+        position: absolute;
+        top: 170px;
+    }
+
+    .day.ng-hide-add {
+        -webkit-transition: all linear 0.2s;
+        transition: all linear 0.2s;
+        left: 0;
+    }
+
+    .day.ng-hide-add-active {
+        left: -1080px;
+    }
+
+    .day.ng-hide-remove {
+        -webkit-transition: all linear 0.2s;
+        transition: all linear 0.2s;
+        left: 1080px;
+    }
+
+    .day.ng-hide-remove-active {
+        left: 0;
+    }
+
+
+}
+
+/* desktop view */
+
+
+    @media all and (min-width: 361px){
+
+        .bottom.ng-hide {
+            display: block !important;
+        }
+        main {
+            position: relative;
+            min-height: 586px;
+            background-color: #f0d5c0;
+            padding-top: 57px;
+        }
+
+        #wrapper {
+            width: 100%;
+
+        }
+
+        header {
+            height: 56px;
+            background-color: #d78069;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            top: 0;
+        }
+
+        #foodstuffs {
+            position: relative;
+            text-align: center;
+        }
+
+        #dotsSection {
+            position: relative;
+            height: 36px;
+            background-color: #f7f0e7;
+            text-align: center;
+            margin-bottom: 53px;
+        }
+
+        header > a {
+            visibility: hidden;
+        }
+
+        #recipeMenuLogo {
+            visibility: hidden;
+        }
+
+        #headerTitle {
+            visibility: hidden;
+        }
+
+        #dotsSection > section {
+            display: inline-block;
+            position: relative;
+            top: 10px;
+        }
+
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border: solid 1px #ac8c6d;
+            border-radius: 7px;
+            float: left;
+            margin: 0 8px 0 8px;
+        }
+
+        .coloredDot {
+            background-color: #ac8c6d;
+        }
+
+        #category {
+            font-size: 40px;
+            color: #d78069;
+            position: relative;
+            top: -30px;
+            text-align: center;
+            /* margin-bottom: 28px; */
+            font-weight: 700;
+            font-family: 'Rokkitt', serif;
+        }
+
+        #leftArrow {
+            position: absolute;
+            background-image: url('../images/left_arrow_icon.png');
+            width: 54px;
+            height: 38px;
+            display: inline-block;
+            top: 60px;
+            left: 52px;
+            z-index: 50;
+            cursor: pointer;
+        }
+
+        #rightArrow {
+            position: absolute;
+            background-image: url('../images/right_arrow_icon.png');
+            width: 54px;
+            height: 38px;
+            display: inline-block;
+            top: 60px;
+            right: 52px;
+            cursor: pointer;
+        }
+
+        span:active, input:active {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        .switch {
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .toggle {
+            position: absolute;
+            margin-right: -9999px;
+            visibility: hidden;
+        }
+
+        input.toggle + label {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            user-select: none;
+            height: 110px;
+            width: 196px;
+            font-weight: 300;
+            font-style: italic;
+            font-family: 'Titillium Web', sans-serif;
+
+            margin: 5px;
+            vertical-align: middle;
+        }
+
+        input.toggle + label:before {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            content: attr(data-on);
+            text-align: center;
+            color: #8c6239;
+            font-size: 25px;
+            background-image: url('../images/swipe-button.png');
+            background-position: right;
+            transition: background-position 0.4s;
+        }
+
+        input.toggle:checked + label:before {
+            background-position: left;
+        }
+
+        nav {
+            width: 100%;
+            position: fixed;
+
+            z-index: 100;
+            top: 8px;
+
+            text-align: center;
+        }
+
+        #navLogo {
+            display: none;
+        }
+
+        .navOption {
+            display: inline-block;
+            color: #fff;
+            font-size: 25px;
+            text-decoration: none;
+            padding-left: 30px;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 600;
+            margin-right: 8%;
+        }
+
+        .foodStuffOption {
+            background: url('../images/foodstuff_menu_icon.png') no-repeat left center;
+            background-size: 20px;
+        }
+
+        .recipesOption {
+            background: url('../images/recipe_menu_icon.png') no-repeat left center;
+            background-size: 20px;
+        }
+
+        .blackListOption {
+            background: url('../images/blacklist_menu_icon.png') no-repeat left center;
+            background-size: 20px;
+        }
+
+        .settingOption {
+            display: none;
+        }
+
+        #exitOption {
+            display: none;
+        }
+
+        .recipe {
+            width: 100%;
+            position: relative;
+
+        }
+
+        .meal {
+            color: #d78069;
+            font-size: 65px;
+            position: absolute;
+            left: 60px;
+            top: 31px;
+            font-family: 'Rokkitt', sans-serif;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .bell {
+            display: inline-block;
+            background: url("../images/bell-icon.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 34px;
+            height: 32px;
+            position: absolute;
+            left: 400px;
+            top: 52px;
+
+            z-index: 1;
+        }
+
+        .time {
+            width: 100px;
+            height: 48px;
+            display: inline-block;
+            background-color: #d78069;
+            color: #fff;
+            font-size: 33px;
+            position: absolute;
+            top: 45px;
+            left: 460px;
+            text-align: center;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 600;
+
+            z-index: 1;
+        }
+
+        .recipeImage {
+            background: url("../images/recipe-image.png");
+            width: 100%;
+            position: relative;
+            -webkit-transition: height .5s;
+            -moz-transition: height .5s;
+            -ms-transition: height .5s;
+            -o-transition: height .5s;
+            transition: height .5s;
+
+            padding-top: 107.4%;
+            background-size: contain;
+        }
+
+        .recipe-btn {
+            width: 294px;
+            height: 120px;
+            background-color: #fff;
+            border: solid 3px #c8a78a;
+            color: #cfbfb3;
+            font-size: 30px;
+            float: left;
+            z-index: 99;
+            position: absolute;
+            top: 140px;
+            left:650px;
+            text-align: center;
+            line-height: 3.5;
+            cursor: pointer;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 600;
+
+            display: none;
+        }
+
+        .ingredients-btn {
+            margin-left: 300px;
+        }
+
+        .recipeName {
+            font-size: 30px;
+            color: #fff;
+            position: absolute;
+            top: 112px;
+            left: 60px;
+            width: 600px;
+            font-family: 'Rokkitt', sans-serif;
+            font-weight: 400;
+
+        }
+
+        .recipeTimeToMake {
+            position: absolute;
+            left: 59px;
+            top: 168px;
+            font-size: 25px;
+            color: #fff;
+            background: url("../images/time-icon.png") no-repeat left center;
+            padding-left: 58px;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 300;
+        }
+
+        .recipeServes {
+            position: absolute;
+            left: 261px;
+            top: 168px;
+            font-size: 25px;
+            color: #fff;
+            background: url("../images/plate-icon.png") no-repeat left center;
+            padding-left: 58px;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 300;
+        }
+
+        ul {
+            list-style-type: none;
+
+            display: inline-block;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        footer > ul {
+            position: relative;
+            top: 3px;
+        }
+
+        footer > ul > li {
+            display: inline;
+        }
+
+        footer > ul > li > a {
+            color: #c0a894;
+            font-size: 25px;
+            font-family: 'Roboto', sans-serif;
+            padding: 0 28px 0 28px;
+        }
+
+        footer {
+            height: 40px;
+            background-color: #a07954;
+            text-align: center;
+            position: fixed;
+            top: 56px;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .currentDay {
+            color: #fff;
+        }
+
+        .pressed-btn {
+            background-color: #c8a78a;
+            border: solid 3px #c8a78a;
+            color: #fff;
+        }
+
+        .bottom {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .bottom-row {
+            width: 92%;
+            color: #c8a78a;
+            background-color: #fff;
+            font-size: 18px;
+            margin: 20px;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .bottom-row > p {
+            padding: 17px;
+        }
+
+        .closedImage {
+            height: auto;
+        }
+
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none;
+        }
+
+        .like {
+            background-image: url("../images/heart.png");
+            display: inline-block;
+            width: 119px;
+            height: 104px;
+            position: absolute;
+            top: 21px;
+            right: 35px;
+            cursor: pointer;
+        }
+
+        .likeFill {
+            background-image: url("../images/heart_p.png");
+            display: inline-block;
+            width: 119px;
+            height: 104px;
+            position: absolute;
+            top: 21px;
+            right: 35px;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -ms-transform: scale(0);
+            -o-transform: scale(0);
+            transform: scale(0);
+            -webkit-transition: transform 1s;
+            -moz-transition: transform 1s;
+            -ms-transition: transform 1s;
+            -o-transition: transform 1s;
+            transition: transform 1s;
+        }
+
+        .likeFill.liked {
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .bottomContainer {
+            overflow-y: auto;
+            position: absolute;
+            top: 266px;
+            width: 45%;
+            left: 50%;
+            height: 60%;
+            transition: height 0.5s;
+            -webkit-transition: height 0.5s;
+            -moz-transition: height 0.5s;
+            -o-transition: height 0.5s;
+
+        }
+
+        .bottomContainer.bottomHide {
+            height: 60%;
+        }
+
+        #darkBG {
+            position: fixed;
+            top: 0;
+            background-color: black;
+            z-index: 999;
+            width: 100%;
+            height: 100%;
+            opacity: .5;
+        }
+
+        .lockScreen {
+            overflow: hidden;
+        }
+
+        #timepicker {
+            height: 400px;
+            width: 600px;
+            background-color: #f8f5f1;
+            text-align: center;
+            position: fixed;
+            top: 120px;
+            left: 25%;
+            z-index: 1000;
+        }
+
+        #mealTimeTitle {
+            color: #8c6239;
+            font-family: 'Titillium Web', sans-serif;
+            font-size: 40px;
+            display: inline-block;
+            position: relative;
+            top: 20px;
+        }
+
+        #leftTopArrow {
+            background-image: url("../images/time_top_arrow.png");
+            height: 22px;
+            width: 38px;
+            display: inline-block;
+            position: absolute;
+            top: 106px;
+            left: 200px;
+            z-index: 1001;
+        }
+
+        #leftBottomArrow {
+            background-image: url("../images/time_bottom_arrow.png");
+            height: 22px;
+            width: 38px;
+            display: inline-block;
+            position: absolute;
+            left: 200px;
+            bottom: 130px;
+            z-index: 1001;
+
+        }
+
+        #rightTopArrow {
+            background-image: url("../images/time_top_arrow.png");
+            height: 22px;
+            width: 38px;
+            display: inline-block;
+            position: absolute;
+            top: 106px;
+            right: 200px;
+            z-index: 1001;
+        }
+
+        #rightBottomArrow {
+            background-image: url("../images/time_bottom_arrow.png");
+            height: 22px;
+            width: 38px;
+            display: inline-block;
+            position: absolute;
+            right: 200px;
+            bottom: 130px;
+            z-index: 1001;
+        }
+
+        #timePickerTime {
+            color: #caac91;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 600;
+            font-size: 100px;
+            position: absolute;
+            top: 100px;
+            left: 173px;
+
+        }
+
+        #doneTimepicker {
+            height: 80px;
+            width: 180px;
+            background-color: #d78069;
+            position: absolute;
+            left: 112px;
+            bottom: 30px;
+            font-size: 40px;
+            color: #fff;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 600;
+
+        }
+
+        #cancelTimepicker {
+            height: 80px;
+            width: 180px;
+            background-color: #d78069;
+            position: absolute;
+            right: 112px;
+            bottom: 30px;
+            font-size: 40px;
+            color: #fff;
+            font-family: 'Titillium Web', sans-serif;
+            font-weight: 600;
+        }
+
+        #cancelTimepicker > p {
+            position: relative;
+            top: 8px;
+        }
+
+        #doneTimepicker > p {
+            position: relative;
+            top: 8px;
+        }
+
+        li {display : inline-block}
+
+        #recipesSection {margin-top: 39px; }
+
+        #goodNight { display: none;}
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        ::-webkit-scrollbar-button {
+            background-color: transparent;
+        }
+
+    }

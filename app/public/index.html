@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html ng-app="food">
+<head>
+    <meta charset="UTF-8">
+    <title>foodstuffs</title>
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:300,300italic,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Rokkitt:700,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/lib/jquery/jquery-2.1.4.min.js"></script>
+    <script src="js/lib/jquery/jquery-ui.min.js"></script>
+
+    <link rel="icon" type="image/png" href="images/Favicon.png">
+</head>
+<body ng-controller="controller" ng-cloak="true" ng-class="{'lockScreen': !darkBG}">
+    <div id="wrapper">
+
+        <!-- header with title and side bar button -->
+        <header>
+            <a href="#" id="button" ng-click="darkBG = (drawerFlag!=true) "></a>
+            <span id="headerTitle">{{headerTitle}}</span>
+            <a href="#" id="recipeMenuLogo" ng-click="recipesClick()" ng-hide="mainLogo"></a>
+        </header>
+
+        <main ng-class="{'mainRecipes' : foodstuffsHide}">
+
+            <!-- the page of the categories -->
+            <section id="foodstuffs"  ng-hide="foodstuffsHide">
+
+                <!-- section to hold the dots for each category -->
+                <section id="dotsSection">
+                    <section ng-repeat="category in ingredients.items">
+                        <section class="dot" ng-class="{'coloredDot' : $index == currentPage}"></section>
+                    </section>
+                </section>
+
+                <span id="leftArrow" ng-click="goLeft()"></span>
+
+                <section id="category">{{ingredients.items[currentPage]._id.toUpperCase()}}</section>
+
+                <span id="rightArrow" ng-click="goRight()"></span>
+
+                <!-- each category is an ul one will be shown while the others are hidden -->
+                <ul ng-repeat="category in ingredients.items" id="{{category._id}}"
+                    ng-hide="category.hide">
+
+                    <!-- each ingredient is a custom checkbox -->
+                    <li ng-repeat="item in category.ingredients">
+                        <div class="switch">
+                            <input id="{{item.name}}" name="{{item.name}}" class="toggle" type="checkbox"
+                                   data-role="none" ng-model="item.checked"
+                                   ng-click="changeArray(item.name,item.checked)">
+                            <label for="{{item.name}}" data-on="{{item.name}}"></label>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- the page of the recipes will be hidden when on the ingredients page-->
+            <section id="recipesSection"  ng-hide="recipesSectionHide">
+
+                <!-- each day is a section that have three meals -->
+                <!-- one day is shown while all the others are hidden -->
+                <section ng-repeat="day in recipes.days" ng-hide="day.hide" class="day ng-hide">
+
+                    <!-- each meal is a section with ingredients, direction and image sections -->
+                    <section ng-repeat="meal in day.meals" class="recipe">
+                        <span class="meal">{{meal.meal.toUpperCase()}}</span>
+                        <span class="bell"></span>
+                        <span class="time" ng-click="setTime($parent.$index, $index)">{{meal.timepickertime}}</span>
+
+                        <section  on-long-press="openBlockPage($parent.$index, $index)" ng-style="{ 'backgroundImage': 'url({{meal.image}})' }" class="recipeImage" ng-class="{'closedImage': meal.pressedDirections || meal.pressedIngredients}">
+                            <span class="recipeName" html="{{meal.name}}"></span>
+                            <span class="recipeTimeToMake">{{meal.time}}</span>
+                            <span class="recipeServes">{{meal.serves}}</span>
+                            <span class="likeFill" ng-class="{'liked' : meal.likedMeal}"></span>
+                            <span class="like" ng-click="likeAMeal(meal)"></span>
+                        </section>
+
+                        <!-- the buttons of each bottom section -->
+                        <section class="ingredients-btn recipe-btn"
+                                 ng-click="ingredientsClick(meal)"
+                                 ng-class="{'pressed-btn': meal.pressedIngredients}">INGREDIENTS</section>
+                        <section class="directions-btn recipe-btn"
+                                 ng-click="directionsClick(meal)"
+                                 ng-class="{'pressed-btn': meal.pressedDirections}">DIRECTIONS</section>
+                        <div class="clear"></div>
+
+                        <!-- the ingredients and direction sections are hidden if not pressed -->
+                        <section class="bottomContainer bottomHide" ng-class="{'bottomHide' : !meal.pressedDirections && !meal.pressedIngredients}">
+                            <section class="bottom" ng-hide="meal.pressedDirections">
+                                <section class="bottom-row" ng-repeat="row in meal.ingredients">
+                                    <p>{{row.description}}</p>
+                                </section>
+                            </section>
+                            <section class="bottom" ng-hide="meal.pressedIngredients">
+                                <section class="bottom-row" ng-repeat="row in meal.directions">
+                                    <p>{{row}}</p>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+
+                </section>
+                <section id="goodNight" ng-hide="goodNightHide">Good Night!</section>
+
+                <!-- the timepicker -->
+                <section id="timepicker" ng-hide="timePicker">
+                    <span id="mealTimeTitle">{{mealTimeTitle}} meal time</span>
+                    <span id="leftTopArrow" ng-click="clickArrowUpHour()"></span>
+                    <span id="rightTopArrow" ng-click="clickArrowUpMin()"></span>
+                    <span id="leftBottomArrow" ng-click="clickArrowDownHour()"></span>
+                    <span id="rightBottomArrow" ng-click="clickArrowDownMin()"></span>
+                    <section id="timePickerTime">{{mealTimeTime}}</section>
+                    <section id="doneTimepicker" ng-click="doneTimepicker()"><p>DONE</p></section>
+                    <section id="cancelTimepicker" ng-click="cancelTimepicker()"><p>CANCEL</p></section>
+                </section>
+
+
+                <section id="blockPage" ng-hide="blockPageHide">
+                    <span class="meal blockMeal">{{blockPageRecipe.meal.toUpperCase()}}</span>
+                    <span class="bell blockBell"></span>
+                    <span class="time blockTime">{{blockPageRecipe.timepickertime}}</span>
+                    <section class="scaleSmall">
+                        <section  class="recipeImage" ng-style="{ 'backgroundImage': 'url(' + blockPageRecipe.image + ')' }">
+                            <span class="recipeName">{{blockPageRecipe.name}}</span>
+                            <span class="recipeTimeToMake">{{blockPageRecipe.time}}</span>
+                            <span class="recipeServes">{{blockPageRecipe.serves}}</span>
+                            <span class="likeFill" ng-class="{'liked' : blockPageRecipe.likedMeal}"></span>
+                            <span class="like"></span>
+                        </section>
+
+
+                        <!-- the buttons of each bottom section -->
+                        <section class="ingredients-btn recipe-btn">INGREDIENTS</section>
+                        <section class="directions-btn recipe-btn">DIRECTIONS</section>
+                        <div class="clear"></div>
+                    </section>
+                    <span id="addBlockList">Add recipe to Black List?</span>
+                    <section id="blockDone" ng-click="blockDone()">DONE</section>
+                    <section id="blockCancel" ng-click="blockCancel()">CANCEL</section>
+                    <section id="blackShade"></section>
+                </section>
+
+                <!-- footer will be the navigation bar between the days  -->
+                <footer>
+                    <ul>
+                        <li ng-repeat="day in recipes.days">
+                            <a href="#" ng-click="selectDay($index)"
+                               ng-class="{'currentDay' : $index == currentDay}">{{day.name}}</a>
+                        </li>
+                    </ul>
+                </footer>
+            </section>
+        </main>
+
+        <!-- side bar menu -->
+        <section id="darkBG" ng-hide="darkBG"></section>
+        <nav>
+            <span id="navLogo" ng-click="darkBG = true"></span>
+            <a href="#" class="navOption foodStuffOption" ng-click="foodstuffsClick()" ng-class="{'currentPageArrow': recipesSectionHide}">Foodstuffs</a>
+            <a href="#" class="navOption recipesOption" ng-click="recipesClick()" ng-class="{'currentPageArrow': !recipesSectionHide}">Recipes</a>
+            <a href="#" class="navOption blackListOption">Black List</a>
+            <a href="#" class="navOption settingOption">Settings</a>
+            <a href="#" id="exitOption" class="navOption">Exit</a>
+        </nav>
+    </div>
+
+    <script src="js/lib/angular/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-animate.min.js"></script>
+    <script src="js/foodstuffs.js"></script>
+</body>
+</html>
